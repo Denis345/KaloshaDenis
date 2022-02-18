@@ -4,19 +4,25 @@ filename=$1
 directory=$2
 extension=$3
 
-
-if [ ! -d $directory ]
+if [ -z $extension ]
 then
-	echo "Directory can't be read" 2 > file.err
+	echo "There are needed 3 parametres"
 else
-	if [ ! -w $filename ]
+
+	if [ ! -d $directory ]
 	then
-		echo "File can't be written" >&2
-	else	
-		cd $directory
-		for file in *.$extension
-		do
-			echo $file >> $filename
-		done;
+		echo "Directory can't be read" >&2
+	else
+		if [ ! -w $filename ]
+		then
+			echo "File can't be written" >&2
+		else	
+			cd $directory
+			for file in *.$extension
+			do
+				echo $file >> $filename
+			done;
+			sort -i $filename
+		fi
 	fi
 fi
