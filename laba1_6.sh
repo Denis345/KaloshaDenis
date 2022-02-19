@@ -2,7 +2,7 @@
 #minSize = $1
 #maxSize = $2
 #fileName = $3
-if [[ $# -ne 3 ]]; 
+if [ $# -ne 3 ]; 
 then
 echo "This command must include 3 parameters" >&2
 echo "1 - Minimal file size" >&2
