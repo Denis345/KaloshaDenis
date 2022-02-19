@@ -9,7 +9,7 @@ then
   echo "2 - Maximal file size";
   echo "3 - Name of the file"; }>&2
 else
-find $pwd -type f -size +$1b -size -$2b -exec realpath {}\; -printf "%f %s\n" >$3
+find $pwd -type f -size +$1b -size -$2b -exec realpath {} \; -printf "%f %s\n" >$3
 echo "Number of files: "
 cat $3 | wc -l
 fi
