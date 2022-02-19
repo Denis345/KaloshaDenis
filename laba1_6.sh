@@ -1,8 +1,15 @@
-if [ $# -eq 4 ] ; then 
-	find $1 -type f -size +$2b -size -$3b -printf "%p, %f, %s\n" > $4
-	printf "Number of files viewed " ; find $1 -type f | wc -l
+#!/bin/bash
+#minSize = $1
+#maxSize = $2
+#fileName = $3
+if [[ $# -ne 3 ]]; 
+then
+echo "This command must include 3 parameters" >&2
+echo "1 - Minimal file size" >&2
+echo "2 - Maximal file size" >&2
+echo "3 - Name of the file" >&2
 else
-	echo "number of invalid parameters" > &2
-	echo "format: (serch directory) (min_size) (max_size) (out_file name)" > &2
+find $pwd -type f -size +$1M -size -$2M -printf "%h %f %s\n" >$3
+echo "Number of files: "
+cat $3 | wc -l
 fi
-
