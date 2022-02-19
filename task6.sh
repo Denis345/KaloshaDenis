@@ -17,8 +17,7 @@ else
 		then
 			echo "File can't be written" >&2
 		else	
-			cd $directory
-			for file in *.$extension
+			for file in $directory*.$extension
 			do
 				echo $file >> $filename
 			done;
